@@ -13,17 +13,42 @@
     }
   },
   "postAttachCommand": {
-    "public": "gh codespace ports visibility 443:public -c $CODESPACE_NAME",
+    "links": "bash /app/start.sh",
     "xray": "sudo /usr/local/bin/xray -c /etc/config.json"
   },
   "portsAttributes": {
     "443": {
-      "label": "xray",
+      "label": "VLESS-xHTTP-PacketUp",
+      "protocol": "http",
+      "onAutoForward": "silent"
+    },
+    "8080": {
+      "label": "VLESS-xHTTP-StreamUp",
+      "protocol": "http",
+      "onAutoForward": "silent"
+    },
+    "8880": {
+      "label": "VLESS-WebSocket",
+      "protocol": "http",
+      "onAutoForward": "silent"
+    },
+    "9090": {
+      "label": "VMess-WebSocket",
+      "protocol": "http",
+      "onAutoForward": "silent"
+    },
+    "9443": {
+      "label": "VLESS-gRPC",
+      "protocol": "http",
+      "onAutoForward": "silent"
+    },
+    "7777": {
+      "label": "Trojan-WebSocket",
       "protocol": "http",
       "onAutoForward": "silent"
     }
   },
-  "forwardPorts": [443],
+  "forwardPorts": [443, 8080, 8880, 9090, 9443, 7777],
   "hostRequirements": {
     "cpus": 2
   }
