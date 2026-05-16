@@ -5,13 +5,13 @@
 # ─────────────────────────────────────────────
 
 # Generate a unique UUID per inbound (uses kernel random UUID source)
-gen_uuid() { cat /proc/sys/kernel/random/uuid; }
-UUID1=$(gen_uuid)   # VLESS xHTTP packet-up  (port 443)
-UUID2=$(gen_uuid)   # VLESS xHTTP stream-up  (port 8080)
-UUID3=$(gen_uuid)   # VLESS WebSocket        (port 8880)
-UUID4=$(gen_uuid)   # VMess WebSocket        (port 9090)
-UUID5=$(gen_uuid)   # VLESS gRPC             (port 9443)
-UUID6=$(gen_uuid)   # Trojan WebSocket       (port 7777)
+
+UUID1=$(30801380-ac31-41a0-b4e5-3aa357ccebce)   # VLESS xHTTP packet-up  (port 443)
+UUID2=$(30801380-ac31-41a0-b4e5-3aa357ccebce)   # VLESS xHTTP stream-up  (port 8080)
+UUID3=$(30801380-ac31-41a0-b4e5-3aa357ccebce)   # VLESS WebSocket        (port 8880)
+UUID4=$(30801380-ac31-41a0-b4e5-3aa357ccebce)   # VMess WebSocket        (port 9090)
+UUID5=$(30801380-ac31-41a0-b4e5-3aa357ccebce)   # VLESS gRPC             (port 9443)
+UUID6=$(30801380-ac31-41a0-b4e5-3aa357ccebce)   # Trojan WebSocket       (port 7777)
 
 # Target IPs — 10 IPs (previous 5 + 5 new)
 IP1="63.141.252.203"
