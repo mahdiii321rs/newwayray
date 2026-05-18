@@ -6,12 +6,12 @@
 
 # Generate a unique UUID per inbound (uses kernel random UUID source)
 
-UUID1="30801380-ac31-41a0-b4e5-3aa357ccebce"   # VLESS xHTTP packet-up  (port 443)
-UUID2="30801380-ac31-41a0-b4e5-3aa357ccebce"  # VLESS xHTTP stream-up  (port 8080)
-UUID3="30801380-ac31-41a0-b4e5-3aa357ccebce"  # VLESS WebSocket        (port 8880)
-UUID4="30801380-ac31-41a0-b4e5-3aa357ccebce"  # VMess WebSocket        (port 9090)
-UUID5="30801380-ac31-41a0-b4e5-3aa357ccebce"  # VLESS gRPC             (port 9443)
-UUID6="30801380-ac31-41a0-b4e5-3aa357ccebce"   # Trojan WebSocket       (port 7777)
+UUID1="30801380-agha-khargooshe-mire-2000"   # VLESS xHTTP packet-up  (port 443)
+UUID2="30801380-agha-khargooshe-mire-2000"  # VLESS xHTTP stream-up  (port 8080)
+UUID3="30801380-agha-khargooshe-mire-2000"  # VLESS WebSocket        (port 8880)
+UUID4="30801380-agha-khargooshe-mire-2000"  # VMess WebSocket        (port 9090)
+UUID5="30801380-agha-khargooshe-mire-2000"  # VLESS gRPC             (port 9443)
+UUID6="30801380-agha-khargooshe-mire-2000"   # Trojan WebSocket       (port 7777)
 
 # Target IPs — 10 IPs (previous 5 + 5 new)
 IP1="63.141.252.203"
@@ -24,6 +24,8 @@ IP7="95.216.69.37"
 IP8="94.130.13.19"
 IP9="94.130.33.41"
 IP10="204.12.196.34"
+IP11="104.19.229.21"
+IP12="104.19.230.21"
 
 # ── write the xray config with ALL inbounds ──────────────────────────────────
 cat > /etc/config.json << EOF
@@ -157,7 +159,7 @@ H7777="${CODESPACE_NAME}-7777.app.github.dev"
 print_links() {
   local label="$1"
   local link_template="$2"   # must contain __IP__ as placeholder
-  for IP in "$IP1" "$IP2" "$IP3" "$IP4" "$IP5" "$IP6" "$IP7" "$IP8" "$IP9" "$IP10"; do
+  for IP in "$IP1" "$IP2" "$IP3" "$IP4" "$IP5" "$IP6" "$IP7" "$IP8" "$IP9" "$IP10" "$IP11" "$IP12"; do
     echo "${link_template//__IP__/$IP}"
   done
 }
@@ -190,7 +192,7 @@ print_links "VLESS-WS" \
   "vless://${UUID3}@__IP__:443?encryption=none&security=tls&sni=${H8880}&host=${H8880}&type=ws&path=%2Fws#VLESS-WebSocket"
 echo ""
 
-for IP in "$IP1" "$IP2" "$IP3" "$IP4" "$IP5" "$IP6" "$IP7" "$IP8" "$IP9" "$IP10"; do
+for IP in "$IP1" "$IP2" "$IP3" "$IP4" "$IP5" "$IP6" "$IP7" "$IP8" "$IP9" "$IP10" "$IP11" "$IP12"; do
   echo "$(vmess_link "$IP")"
 done
 echo ""
